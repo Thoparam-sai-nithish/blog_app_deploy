@@ -1,0 +1,14 @@
+.rootNav, .rootFoot{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border: 1px dashed black;
+}
+
+.rootOut{
+    height: 90vh;
+}
+
+

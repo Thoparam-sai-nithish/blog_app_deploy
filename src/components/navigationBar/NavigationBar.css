@@ -1,0 +1,134 @@
+.NavigationBar{
+    width: 100%;
+    height: 100%;
+}
+.grid-container{
+    height: 100%;
+    padding: 5px 3px;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 6fr;
+}
+
+.box{
+    /* border: 1px dashed blue; */
+    height: 6vh;
+}
+.box1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box3{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+.box4{
+    margin-left: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 10%;
+    align-items: center;
+}
+
+.box1 img{
+    height: 100%;
+}
+.box2 #search{
+    height: 100%;
+    width: 90%;
+    padding: 4px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 0px gray, inset -2px -2px 0px gray,
+                inset 2px -2px 0px gray,inset -2px 2px 0px gray;
+    background-color: white;
+    color: black;
+}
+.box3 .loginBtn{
+    height: 60%;
+    padding: 5px 10px;
+    border: 1px solid #0296DE;
+    border-radius: 10px;
+    background-color: #0296DE;
+    font-weight: bold;
+    font-size: medium;
+    color: white;
+}
+.box3 .profileBtn{
+    width: fit-content;
+    border-radius: 50%;
+    padding: 0;
+    border: none;
+}
+.box3 .profileBtn .navIcon{
+    height: 40px;
+    width: 40px;
+    color: white;
+    background-color: #0296DE;
+    border-radius: 50%;
+    box-shadow:  2px 2px 0px rgba(255, 255, 255, 0.116),  -2px -2px 0px rgba(255, 255, 255, 0.116),
+                     2px -2px 0px rgba(255, 255, 255, 0.116), -2px 2px 0px rgba(255, 255, 255, 0.116);
+}
+
+.box4 .menu-item{
+    /* border: 1px solid black; */
+    height: 100%;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    cursor: pointer;
+    position: relative;
+    color: black;
+    font-weight: bold;
+}
+.icon2{
+    transform: translateX(70%);
+    transition: transform 0.5s ease;
+    opacity: 0;
+    pointer-events: none;
+}
+.icon1,.icon2{
+    position: absolute;
+    top: 5%;
+    width: 100%;
+    height: 50%;
+    color: #01B8F4;
+    
+}
+.menu-item:hover,
+.menu-item.active{
+    border-bottom: 3px solid #0296DE;
+}
+.menu-item:hover .icon1{
+    transform: translateX(-70%);
+    transition: transform  0.5s ease,opacity 0.5s ease;
+    opacity: 0;
+}
+.menu-item:hover .icon2{
+    transform: translateX(0%);
+    transition: transform 0.5s ease;
+    opacity: 1;
+}
+.menu-item{
+    text-decoration:none ;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 425px) {
+    .grid-container {
+        grid-template-columns: 2fr 7fr 3fr;
+    }
+    .box4{
+        display: none;
+    }
+}
