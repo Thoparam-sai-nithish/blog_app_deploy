@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './NavigationBar.css'
 import image from '../../images/appLogo.png'
 import { RiLoginBoxFill } from "react-icons/ri";
@@ -10,10 +10,29 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { IoCloudOutline } from "react-icons/io5";
 import { IoCloudSharp } from "react-icons/io5";
 import { NavLink, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function NavigationBar() {
-  const [isUserLoggedin, setIsUserLoggedin] = useState(true)
+  const [isUserLoggedin, setIsUserLoggedin] = useState(false)
   const navigate = useNavigate();
+
+  useEffect(()=>{
+    const token = localStorage.getItem('token')
+    axios.post('http://localhost:3500/accounts/verifyLoginToken',{token})
+    .then((res)=>{ 
+      setIsUserLoggedin(res.data.valid)
+      localStorage.setItem('email',res.data.payload.email)
+      if(!res.data.valid) {
+        alert("Please login !");
+        navigate('/')
+      }
+    })
+    .catch((err)=>{
+      alert("Please login again!");
+      navigate('/');
+    })
+  },[localStorage.getItem('token')])
+
   return (
     <div className='NavigationBar'>
       <div className="grid-container">
@@ -33,29 +52,29 @@ function NavigationBar() {
         <div className="box box3">
           {
             isUserLoggedin?
-            <NavLink to='/profile' onClick={()=>{console.log("first")}} className="profileBtn"><IoPersonSharp className='navIcon'/> </NavLink>
+            <NavLink to='/profile' style={{textDecoration:"none"}} className="profileBtn"><IoPersonSharp className='navIcon'/> </NavLink>
             :
-            <NavLink to={'/login'} onClick={()=>{console.log("first")}} className="loginBtn">Login</NavLink>
+            <NavLink to={'/login'}  style={{textDecoration:"none"}} className="loginBtn">Login</NavLink>
           }
         </div>
 
-        <div className="box box4">
+        {<div className="box box4">
           <NavLink to={'/Home'} activeClassName="active" className="home menu-item">
             <IoHomeOutline className='icon1'/>
             <IoHomeSharp className='icon2'/>
             Home
           </NavLink>
-          <NavLink to={'/addBlog'} className="add-blog menu-item">
+          {isUserLoggedin&&<NavLink to={'/addBlog'} className="add-blog menu-item">
             <AiOutlineThunderbolt className='icon1'/>
             <AiFillThunderbolt className='icon2'/>
-            add blog
-          </NavLink>
-          <NavLink to={'/myBlogs'} className="my-blogs menu-item">
+            add Blog
+          </NavLink>}
+          {isUserLoggedin&&<NavLink to={'/myBlogs'} className="my-blogs menu-item">
             <IoCloudOutline className='icon1'/>
             <IoCloudSharp className='icon2'/>
-            my blogs
-          </NavLink>
-        </div>
+            my Blogs
+          </NavLink>}
+        </div>}
         
       </div>
     </div>

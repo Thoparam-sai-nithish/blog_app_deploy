@@ -1,0 +1,26 @@
+POST http://localhost:3500/accounts/createAccount
+Content-Type: application/json
+
+{
+    "email":"thoparamsainithish1234@gmail.com",
+    "mobile":"8179221413",
+    "password":"nithish"
+}
+
+###
+POST http://localhost:3500/accounts/login
+Content-Type: application/json
+
+{
+    "email" : "thoparamsainithish1234@gmail.com",
+    "mobile":"8179221413",
+    "password":"nithish"
+}
+
+###
+POST http://localhost:3500/accounts/verifyLoginToken
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWMwOTc0YzZhNjMxNTAxMjI3YmNlZDciLCJlbWFpbCI6InRob3BhcmFtc2Fpbml0aGlzaDEyMzRAZ21haWwuY29tIiwibW9iaWxlIjoiODE3OTIyMTQxMyIsInBhc3N3b3JkIjoiJDJhJDA0JElLQW82cE8zWVNVWWVFM0swMUs2ci5GYjE4VTNlNEo2Q0V0NlhKS2xNN2d6S0ttRXB1RW9XIiwiaWF0IjoxNzA3MTIyODk1LCJleHAiOjE3MDc3Mjc2OTV9.VD9sZ0yR5FXhwcl2qz1Xmq1hqUvp5Ou0rMv7zbOMdzM"
+}

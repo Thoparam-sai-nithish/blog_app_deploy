@@ -1,0 +1,22 @@
+.home-container{
+    background-color: #CBE5FA;
+    overflow: auto;
+    height: 90vh;
+    padding: 10px 0;
+}
+.home-container::-webkit-scrollbar {
+    width: 5px; /* Set the width of the scrollbar */
+}
+.home-container::-webkit-scrollbar-thumb {
+    background-color: silver; /* Color of the scrollbar thumb */
+    border-radius: 3px;
+}
+.blogs-container{
+    /* height: 100%; */
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
