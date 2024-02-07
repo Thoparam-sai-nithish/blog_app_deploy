@@ -8,6 +8,7 @@ import Home from './pages/home/Home';
 import AddBlog from './pages/addBlog/AddBlog'
 import MyBlogs from './pages/myBlogs/MyBlogs'
 import Profile from './pages/profile/Profile'
+import SearchedBlogs from './pages/searchedBlogs/SearchedBlogs';
 
 function App() {
 
@@ -37,8 +38,12 @@ function App() {
           element:<MyBlogs/>
         },
         {
-          path:'profile',
+          path:'/profile',
           element:<Profile/>
+        },
+        {
+          path:'/searchedBlogs',
+          element:<SearchedBlogs/>
         }
       ]
     }

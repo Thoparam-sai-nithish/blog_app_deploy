@@ -22,8 +22,9 @@
 }
 .box2{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    position: relative;
 }
 .box3{
     display: flex;
@@ -124,7 +125,17 @@
 .menu-item{
     text-decoration:none ;
 }
-
+.box2 .searchTags{
+    position: absolute;
+    top: 3.6rem;
+    left: 0rem;
+    width: 250px;
+    /* display: none; */
+}
+.box2 input:focus~.searchTags{
+    display: block;
+    cursor: pointer;
+}
 /* MEDIA QUERY */
 @media screen and (max-width: 425px) {
     .grid-container {

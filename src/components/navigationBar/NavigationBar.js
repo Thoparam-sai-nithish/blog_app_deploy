@@ -10,11 +10,45 @@ import { AiFillThunderbolt } from "react-icons/ai";
 import { IoCloudOutline } from "react-icons/io5";
 import { IoCloudSharp } from "react-icons/io5";
 import { NavLink, useNavigate } from 'react-router-dom';
+import { CiSearch } from "react-icons/ci";
 import axios from 'axios';
 
 function NavigationBar() {
   const [isUserLoggedin, setIsUserLoggedin] = useState(false)
+  const [selectedTags, setSelectedTags] = useState([]);
   const navigate = useNavigate();
+
+  const handleSearch= ()=>{
+    console.log(selectedTags)
+    if(selectedTags.length > 0){
+      axios.post('http://localhost:3500/blogs/allBlogs',{})
+      .then((res)=>{
+        const allBlogs = res.data.payload
+        const filteredBlogs = allBlogs.filter((blog) =>
+          selectedTags.every((tag) => blog.tags.includes(tag))
+        );
+        
+        navigate('/searchedBlogs',{state:filteredBlogs })
+      })
+      .catch((err)=>{
+        console.log("ERR: ",err)
+      })
+    }
+  }
+
+  const handleSelectChange = (event) => {
+    const clickedValue = event.target.value;
+    
+    // Check if the clicked option is already selected
+    if (selectedTags.includes(clickedValue)) {
+      // If selected, remove it from the array
+      const updatedOptions = selectedTags.filter((option) => option !== clickedValue && option!==',');
+      setSelectedTags(updatedOptions);
+    } else {
+      // If not selected, add it to the array
+      setSelectedTags([...selectedTags, clickedValue]);
+    }
+  };
 
   useEffect(()=>{
     const token = localStorage.getItem('token')
@@ -46,7 +80,35 @@ function NavigationBar() {
         </div>
         
         <div className="box box2">
-          <input type="search" name="search" id="search" placeholder='search'/>
+          <input  type="search" name="search" value={selectedTags} id="search" placeholder='search tags'/>
+          <div className="searchTags">
+              <select
+                id="multiSelect"
+                multiple
+                value={selectedTags}
+                onChange={handleSelectChange}
+                className='tags'
+              >
+                <option value="Sports">Sports</option>
+                <option value="spirituality">spirituality</option>
+                <option value="Technology">Technology</option>
+                <option value="Lifestyle">Lifestyle</option>
+                <option value="Health">Health</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Education">Education</option>
+                <option value="Politics">Politics</option>
+                <option value="Current Affairs">Current Affairs</option>
+                <option value="Business">Business</option>
+                {/* Add more options as needed */}
+              </select>
+            </div>
+            <button style={{
+              border:'none',
+              backgroundColor:'transparent',
+              height:'70%' ,
+            }}
+              onClick={()=>{handleSearch()}}
+            ><CiSearch/></button>
         </div>
 
         <div className="box box3">
