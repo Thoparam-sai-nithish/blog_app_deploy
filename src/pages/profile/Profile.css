@@ -1,0 +1,76 @@
+.profile{
+    height: 90vh;
+    padding: 5px;
+    overflow: auto;
+    border: 1px solid black;
+    background-color: #CBE5FA;
+}
+.personal-details{
+    height: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.blogging-details{
+    height: 40%;
+    padding: 10px;
+}
+.user-pic{
+}
+.user-data p{
+    font-weight: bold;
+    border: 1px solid silver;
+    border-radius: 5px;
+    box-shadow: inset 1px 1px 1px silver, inset -1px -1px 1px silver,
+                inset -1px 1px 1px silver, inset 1px -1px 1px silver;
+    font-size: large;
+    padding: 5px;
+    background-color:aliceblue;
+    
+}
+.user-data p span{
+    font-style: italic;
+    font-weight: lighter;
+}
+.user-pic img{
+    width: 35vh;
+}
+.blogging-details-title{
+    margin-top: 40px;
+    text-align: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+ .tags-frecquencies{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    overflow-x: auto;
+}
+.tags-frecquencies div{
+    width: 300px;
+    height: 80px;
+    border: 1px solid silver;
+    box-shadow: inset 1px 1px 1px silver, inset -1px -1px 1px silver,
+                inset -1px 1px 1px silver, inset 1px -1px 1px silver;
+    padding: 0px 5px;
+    background-color: #017FCA;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.tags-frecquencies p{
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    padding: 0;
+    margin: 5px;
+}
+
+@media  screen  and (max-width: 768px) {
+    .user-pic img{
+        width: 20vh;
+    }
+}

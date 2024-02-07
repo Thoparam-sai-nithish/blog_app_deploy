@@ -53,6 +53,7 @@ accountsApp.post('/login',expressAsyncHandler(async(req,res)=>{
 //verify login token
 accountsApp.post('/verifyLoginToken',expressAsyncHandler(async(req,res)=>{
     const accountsCollectionObj = req.app.get('accountsCollectionObj');
+    const blogsCollectionObj = req.app.get('blogsCollectionObj')
     const {token} = req.body;
     try{
         let userData = await jwt.verify(token,'blogApp')
@@ -63,6 +64,10 @@ accountsApp.post('/verifyLoginToken',expressAsyncHandler(async(req,res)=>{
             delete userData?.iat;
             delete userData?.exp;
             delete userData?._id
+            const blogs = await blogsCollectionObj.find({createdByEmail:userData.email}).toArray()
+            console.log(blogs)
+            userData.blogsCount = blogs.length;
+            userData.blogs = blogs;
             res.status(200).send({valid:true,payload:userData}); 
         }
         else res.status(200).send({valid:false})

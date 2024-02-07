@@ -1,0 +1,47 @@
+.Intro{
+    min-height: 90vh;
+    border: 1px solid black;
+    background-color: #F0F8FF;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    align-items: center;
+    flex-wrap: wrap;       
+}
+.left{
+    /* border: 1px solid black; */
+    width: 50%;
+}
+.left img{
+    width: 100%;
+}
+.right{
+    /* border: 1px solid black; */
+    width: 50%;
+    text-align: center  ;
+}
+.quote{
+    font-size: xx-large;
+    font-weight: bolder;
+
+}
+.main-quote{
+    color: #E7CB48;
+    font-family: cursive;
+    font-size: 50px;
+}
+.quote-content{
+    /* border: 1px solid black; */
+}
+
+@media screen and (max-width:768px) {
+    .left{
+        width: 100%;
+    }
+    .left img{
+        width: 100%;
+    }
+    .right{
+        width: 100%;
+    }
+}
