@@ -42,7 +42,7 @@ accountsApp.post('/login',expressAsyncHandler(async(req,res)=>{
         if(passCheck!= true) {
             res.status(200).send({success:false,message:'password not matched!'});
         }else{
-            const privateKey = 'blogApp'
+            const privateKey = process.env.private_key
             let jwToken = jwt.sign(dbAccount,privateKey,{expiresIn:'7d'})
             res.status(200).send({success:true, message:'credentials matched', token:jwToken});
         }
@@ -56,7 +56,8 @@ accountsApp.post('/verifyLoginToken',expressAsyncHandler(async(req,res)=>{
     const blogsCollectionObj = req.app.get('blogsCollectionObj')
     const {token} = req.body;
     try{
-        let userData = await jwt.verify(token,'blogApp')
+        const private_key = process.env.private_key
+        let userData = await jwt.verify(token,private_key)
         if(userData) {
             // console.log('User Data in server ~',userData) 
             userData = await accountsCollectionObj?.findOne({email:userData.email})

@@ -144,12 +144,12 @@ function Login() {
                     </div>
                 <div className={formState==='signup'?'overlay-left active':'overlay-left inactive'}>
                     <h2>Had an account! Click the Login button below to signin!</h2>
-                    <p>Bharath Intern Scheme empowers learners with practical skills in web development, MERN/MEAN stacks, data science, and machine learning, fostering expertise through comprehensive virtual internships for career readiness.</p>
+                    <p>A Blog Application is a platform enabling users to create, publish, and manage blog posts. It includes features like content editing, categorization, user authentication, and audience engagement tools.</p>
                     <button onClick={()=>{setFormState('login')}}>Login</button>
                 </div>
                 <div className={formState==='login'? 'overlay-right active':'overlay-right inactive'}>
                     <h2>Don't have a account! Click the Login button below to create!</h2>
-                    <p>Bharath Intern Scheme empowers learners with practical skills in web development, MERN/MEAN stacks, data science, and machine learning, fostering expertise through comprehensive virtual internships for career readiness.</p>
+                    <p>A Blog Application is a platform enabling users to create, publish, and manage blog posts. It includes features like content editing, categorization, user authentication, and audience engagement tools.</p>
                     <button onClick={()=>{setFormState('signup')}}>Signup</button>
                 </div>
             </div>
