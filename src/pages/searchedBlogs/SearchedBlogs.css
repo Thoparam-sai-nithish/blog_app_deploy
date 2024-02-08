@@ -4,8 +4,8 @@
     background-color: #CBE5FA;
     padding: 20px;
     height: 87vh;
+    color: rgb(252, 71, 48);
   }
-  
   .blogs-container {
     display: flex;
     flex-wrap: wrap;

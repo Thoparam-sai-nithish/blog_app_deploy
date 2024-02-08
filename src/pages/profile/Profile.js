@@ -59,6 +59,11 @@ function Profile() {
           <p>Email : <span>{userDetails?.email}</span></p>
           <p>Mobile : <span>{userDetails?.mobile}</span></p>
           <p>Bloggings: <span>{userDetails?.blogsCount}</span></p>
+          <button  style={{
+            width:'100%', height:'30px',fontSize:'larger',borderRadius:'5px',border:'none',backgroundColor:'rgb(252, 71, 48)',color:'white',fontWeight:'bold',cursor:'pointer'
+          }} 
+            onClick={()=>{localStorage.clear();window.location.reload()}}
+          > Logout</button>
         </div>
       </div>
       <div className="blogging-details">

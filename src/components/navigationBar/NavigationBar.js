@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import './NavigationBar.css'
 import image from '../../images/appLogo.png'
+import Offcanvas from '../../components/offcanvas/Offcanvas';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { RiLoginBoxFill } from "react-icons/ri";
 import { IoPersonSharp } from "react-icons/io5";
 import { IoHomeOutline } from "react-icons/io5";
@@ -9,14 +11,26 @@ import { AiOutlineThunderbolt } from "react-icons/ai";
 import { AiFillThunderbolt } from "react-icons/ai";
 import { IoCloudOutline } from "react-icons/io5";
 import { IoCloudSharp } from "react-icons/io5";
-import { NavLink, useNavigate } from 'react-router-dom';
+import { ImMenu } from "react-icons/im";
 import { CiSearch } from "react-icons/ci";
+
 import axios from 'axios';
 
 function NavigationBar() {
   const [isUserLoggedin, setIsUserLoggedin] = useState(false)
   const [selectedTags, setSelectedTags] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+
   const navigate = useNavigate();
+
+  // Offcanvas
+  const openOffcanvas = () => {
+    setIsOpen(true);
+  };
+
+  const closeOffcanvas = () => {
+    setIsOpen(false);
+  };
 
   const handleSearch= ()=>{
     console.log(selectedTags)
@@ -78,8 +92,17 @@ function NavigationBar() {
         >
           <img src={image} alt="" />
         </div>
+          
+                  <div className="box box3">
+                    {
+                      isUserLoggedin?
+                      <NavLink to='/profile' style={{textDecoration:"none"}} className="profileBtn"><IoPersonSharp className='navIcon'/> </NavLink>
+                      :
+                      <NavLink to={'/login'}  style={{textDecoration:"none"}} className="loginBtn">Login</NavLink>
+                    }
+                  </div>
         
-        <div className="box box2">
+        {/* <div className="box box2">
           <input  type="search" name="search" value={selectedTags} id="search" placeholder='search tags'/>
           <div className="searchTags">
               <select
@@ -99,7 +122,6 @@ function NavigationBar() {
                 <option value="Politics">Politics</option>
                 <option value="Current Affairs">Current Affairs</option>
                 <option value="Business">Business</option>
-                {/* Add more options as needed */}
               </select>
             </div>
             <button style={{
@@ -109,18 +131,9 @@ function NavigationBar() {
             }}
               onClick={()=>{handleSearch()}}
             ><CiSearch/></button>
-        </div>
+        </div> */}
 
-        <div className="box box3">
-          {
-            isUserLoggedin?
-            <NavLink to='/profile' style={{textDecoration:"none"}} className="profileBtn"><IoPersonSharp className='navIcon'/> </NavLink>
-            :
-            <NavLink to={'/login'}  style={{textDecoration:"none"}} className="loginBtn">Login</NavLink>
-          }
-        </div>
-
-        {<div className="box box4">
+        {<div className="box box4 loginBox">
           <NavLink to={'/Home'} activeClassName="active" className="home menu-item">
             <IoHomeOutline className='icon1'/>
             <IoHomeSharp className='icon2'/>
@@ -136,8 +149,16 @@ function NavigationBar() {
             <IoCloudSharp className='icon2'/>
             my Blogs
           </NavLink>}
+          
         </div>}
-        
+        <div className="box box4 offCanvasBox">
+        <div className="offCanvas">
+            <button onClick={openOffcanvas}><ImMenu className='off-icon'/></button>
+            <Offcanvas isOpen={isOpen} onClose={closeOffcanvas} isUserLoggedin={isUserLoggedin}>
+              
+            </Offcanvas>
+          </div>
+        </div>
       </div>
     </div>
   )
