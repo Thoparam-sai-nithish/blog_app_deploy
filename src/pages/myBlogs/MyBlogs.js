@@ -8,7 +8,7 @@ function MyBlogs() {
   const [allBlogs, setAllBlogs] = useState([])
   //fetch all blogs
   useEffect(()=>{
-    axios.post('http://localhost:3500/blogs/allBlogs',{})
+    axios.post('https://blogapp-aapi.onrender.com/blogs/allBlogs',{})
     .then((res)=>{
       const userEmail = localStorage.getItem('email');
       const filteredBlogs = res.data.payload.filter(blog => blog.createdByEmail === userEmail);

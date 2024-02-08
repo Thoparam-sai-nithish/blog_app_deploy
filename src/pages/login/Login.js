@@ -21,7 +21,7 @@ function Login() {
             email : data.loginEmail,
             password : data.loginPass
         }
-        axios.post('http://localhost:3500/accounts/login',loginData)
+        axios.post('https://blogapp-aapi.onrender.com/accounts/login',loginData)
         .then((res)=>{
             console.log("Result :", res);
             if(res.data.success) {
@@ -52,7 +52,7 @@ function Login() {
             }
             else{
                 console.log(signupData)
-                axios.post('http://localhost:3500/accounts/createAccount',signupData)
+                axios.post('https://blogapp-aapi.onrender.com/accounts/createAccount',signupData)
                 .then((res)=>{
                     console.log("Result :", res); 
                     if(res.data.success!==true) setSignupErr(res.data.message)

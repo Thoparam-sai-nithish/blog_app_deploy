@@ -11,7 +11,7 @@ function Profile() {
   const navigate = useNavigate();
   useEffect(()=>{
     const token = localStorage.getItem('token')
-    axios.post('http://localhost:3500/accounts/verifyLoginToken',{token})
+    axios.post('https://blogapp-aapi.onrender.com/accounts/verifyLoginToken',{token})
     .then((res)=>{ 
       setUserDetails(res.data.payload);
       console.log(res.data.payload)

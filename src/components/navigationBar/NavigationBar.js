@@ -35,7 +35,7 @@ function NavigationBar() {
   const handleSearch= ()=>{
     console.log(selectedTags)
     if(selectedTags.length > 0){
-      axios.post('http://localhost:3500/blogs/allBlogs',{})
+      axios.post('https://blogapp-aapi.onrender.com/blogs/allBlogs',{})
       .then((res)=>{
         const allBlogs = res.data.payload
         const filteredBlogs = allBlogs.filter((blog) =>
@@ -66,7 +66,7 @@ function NavigationBar() {
 
   useEffect(()=>{
     const token = localStorage.getItem('token')
-    axios.post('http://localhost:3500/accounts/verifyLoginToken',{token})
+    axios.post('https://blogapp-aapi.onrender.com/accounts/verifyLoginToken',{token})
     .then((res)=>{ 
       setIsUserLoggedin(res.data.valid)
       localStorage.setItem('email',res.data.payload.email)

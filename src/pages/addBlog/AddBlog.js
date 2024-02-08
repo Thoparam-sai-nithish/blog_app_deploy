@@ -38,7 +38,7 @@ function AddBlog() {
       const token = localStorage.getItem('token');
       if(!token) window.location.reload();
       //verify token
-      axios.post('http://localhost:3500/accounts/verifyLoginToken',{token})
+      axios.post('https://blogapp-aapi.onrender.com/accounts/verifyLoginToken',{token})
       .then((res)=>{ 
         if(!res.data.valid) {
           window.location.reload();
@@ -50,7 +50,7 @@ function AddBlog() {
         data.timeStamp = DateTime();
         console.log("Blog Data", data)
 
-        axios.post('http://localhost:3500/blogs/postBlog',data)
+        axios.post('https://blogapp-aapi.onrender.com/blogs/postBlog',data)
         .then((res)=>{
           console.log('resonse from server:',res)
           alert('Blog inserted succesfully')
