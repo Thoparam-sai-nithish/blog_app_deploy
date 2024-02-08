@@ -85,7 +85,7 @@ function AddBlog() {
               <span>Select Atleast one tag:</span>
               <select
                 id="multiSelect"
-                multiple
+                // multiple
                 value={selectedTags}
                 onChange={handleSelectChange}
                 className='tags'
