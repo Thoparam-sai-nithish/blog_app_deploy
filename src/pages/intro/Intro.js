@@ -13,17 +13,9 @@ function Intro() {
           It is a  reflection of <span className="main-quote"> you</span>, your <span className="main-quote">thoughts </span> & <span className="main-quote">values</span> <br/>
 
         </span>
-        <span className='quote-content' style={{
-          fontSize:'larger',
-          fontFamily:'sans-serif',
-          lineHeight:'25px',
-          // letterSpacing:'1px',
-          fontStyle:'italic',
-          color:'#154351',
-        }}>Blogging fosters community, connections, and collaboration, offering a platform where voices are heard, stories are shared, and relationships flourish.It cultivates a vibrant network where ideas converge, experiences intertwine, and individuals find inspiration, empowerment, and endless opportunities for growth</span>
-      </div>
+        </div>
     </div>
   )
-}
+} 
 
 export default Intro
