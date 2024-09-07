@@ -1,0 +1,35 @@
+name: Deploy to Render
+
+on:
+  push:
+    branches:
+      - master  # or any branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # specify the Node.js version if needed
+
+      - name: Install dependencies
+        run: npm install  # or any other command to install dependencies
+
+      - name: Build
+        run: npm run build  # or any other build command
+
+      - name: Deploy to Render
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -X POST \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{"serviceId": "srv-cn29bmicn0vc738ubv1g", "branch": "main"}' \
+            https://dashboard.render.com/web/srv-cn29bmicn0vc738ubv1g/deploys
