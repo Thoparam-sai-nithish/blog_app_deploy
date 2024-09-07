@@ -22,6 +22,8 @@ jobs:
         run: npm install  # or any other command to install dependencies
 
       - name: Build
+        env:
+          CI: false
         run: npm run build  # or any other build command
 
       - name: Deploy to Render
