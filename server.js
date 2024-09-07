@@ -22,7 +22,7 @@ const client = new MongoClient (MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
- 
+  
 
 
 // Connect to DB

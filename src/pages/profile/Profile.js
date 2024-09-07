@@ -20,14 +20,14 @@ function Profile() {
       console.log('something went wrong  ERR:',err)
       alert('Something went wrong! please login again');
       localStorage.clear();
-      navigate('/login')
+      // navigate('/login')
     })
   },[])
   //find blogging histry
   useEffect(() => {
     if (userDetails && userDetails.blogs) {
       const frequencyMap = {};
-  
+   
       // Iterate through each blog
       userDetails.blogs.forEach(blog => {
         // Iterate through each tag in the blog
